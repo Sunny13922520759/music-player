@@ -127,13 +127,16 @@ border-radius: 50%;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+[ v-cloak]{
+    display: none;
+}
 
     </style>
 </head>
 
 <body>
     <div id="music">
-        <div class="left">
+        <div class="left" v-cloak>
             <input type="text" placeholder="请输入搜索的歌曲" @keyup.enter="search" v-model.trim="musicName">
             <transition-group name="list" tag="ul">
                 <li v-for="(item, index) in songList" :key="item.id" @dblclick="playMusic(item.id)">
@@ -141,7 +144,7 @@ border-radius: 50%;
                 </li>
             </transition-group>
         </div>
-        <div class="right">
+        <div class="right" v-cloak>
             <img class="pic" :src="picUrl==''?'http://img3.yxlady.com/yl/UploadFiles_5361/20150727/20150727152340263.jpg':picUrl"
                 alt="">
             <audio :src="musicUrl" controls autoplay></audio>
